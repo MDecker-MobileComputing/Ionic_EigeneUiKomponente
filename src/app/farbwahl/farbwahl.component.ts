@@ -1,26 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit  } from '@angular/core';
 
 @Component({
   selector: 'app-farbwahl',
   templateUrl: './farbwahl.component.html',
   styleUrls: ['./farbwahl.component.scss'],
 })
-export class FarbwahlComponent  {
+export class FarbwahlComponent implements OnInit{
 
-  /** Wert für Rot-Anteil von Farbe (0..255). */
-  public rotWert : number = 240;
+  /** Wert für Rot-Anteil von Farbe (0..255), kann über Attribut [rotWert] vor Verwender gesetzt werden. */
+  @Input() rotWert: number = 240;
 
-  /** Wert für Grün-Anteil von Farbe (0..255). */
-  public gruenWert : number = 10;
+  /** Wert für Grün-Anteil von Farbe (0..255), kann über Attribut [gruenWert] vor Verwender gesetzt werden. */
+  @Input() gruenWert : number = 10;
 
-  /** Wert für Balu-Anteil von Farbe (0..255). */
-  public blauWert : number = 10;
+  /** Wert für Blau-Anteil von Farbe (0..255), kann über Attribut [blauWert] vor Verwender gesetzt werden. */
+  @Input()  blauWert : number = 10;
 
   /** Hex-Code der aktuelles ausgewählten Farbe. */
   public farbeHexCode : string = "";
 
 
-  constructor() { 
+  /**
+   * Lifecycle-Methode, die aufgerufen wird, wenn die Komponente initialisiert wird.
+   * Aktualisiert die Farbe.
+   */
+  ngOnInit() {
 
     this.onFarbanteilChanged();
   }
@@ -33,8 +37,6 @@ export class FarbwahlComponent  {
   onFarbanteilChanged() {
 
     const HEX_BASIS_WERT = 16;
-
-    //console.log(`rot=${this.rotWert}, grün=${this.gruenWert}, blau=${this.blauWert}`);
 
     let rotHex   = this.rotWert.toString(   HEX_BASIS_WERT );
     let gruenHex = this.gruenWert.toString( HEX_BASIS_WERT );
