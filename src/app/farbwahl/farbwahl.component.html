@@ -1,8 +1,6 @@
 <ion-list>
-  
-  <ion-list-header>
-    Farbe einstellen
-  </ion-list-header>
+
+  <ion-list-header>Farbe auswählen:</ion-list-header>
 
   <!-- Rot-Anteil -->
   <ion-item>
@@ -28,7 +26,7 @@
   <ion-item>
     <ion-label position="fixed">Blau</ion-label>
     <ion-range color="tertiary" min="0" max="255" step="1" pin="true" snaps="true"
-               [(ngModel)]="blauWert" (ionChange)="onFarbanteilChanged()">               
+               [(ngModel)]="blauWert" (ionChange)="onFarbanteilChanged()">
       <ion-icon color="tertiary" slot="start" size="small" name="sunny">0%</ion-icon>
       <ion-icon color="tertiary" slot="end"   size="large" name="sunny">100%</ion-icon>
     </ion-range>
@@ -36,8 +34,6 @@
 
 </ion-list>
 
-<ion-toolbar id="farb-anzeige-toolbar" style="--background:{{farbeHexCode}}">
-
+<ion-toolbar id="farb-anzeige-toolbar" [style.--background]="farbeHexCode">
   <ion-title id="hex-code-title">{{farbeHexCode}}</ion-title>
-
 </ion-toolbar>
